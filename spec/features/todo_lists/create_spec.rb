@@ -32,10 +32,10 @@ describe "Creating to do lists" do
 		expect(page).to_not have_content("This is what I'm doing today.")
 	end 
 
-	it "displays an error when the todo list has a title less than three characters" do
+	it "displays an error when the todo list has a title less than 3 characters" do
 		expect(TodoList.count).to eq(0)
 
-		create_todo_list title:"Hi", description:"This is what I'm doing today."
+		create_todo_list title:"Hi"
 
 		expect(page).to have_content("error")
 		expect(TodoList.count).to eq(0)
@@ -56,10 +56,10 @@ describe "Creating to do lists" do
 		expect(page).to_not have_content("Grocery list")
 	end 
 
-	it "displays an error when the todo list has a description less than three characters" do
+	it "displays an error when the todo list has a description less than 5 characters" do
 		expect(TodoList.count).to eq(0)
 
-		create_todo_list title: "Grocery list" description:"Food"
+		create_todo_list title: "Grocery list", description:"Food"
 
 		expect(page).to have_content("error")
 		expect(TodoList.count).to eq(0)
